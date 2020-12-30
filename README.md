@@ -6,7 +6,7 @@ Install the newest Nodejs version on your machine.
 
 ## Getting Started
 
-# Create a MongoDB Cloud Instance
+Create a MongoDB Cloud Instance
 [Get the connection_string](https://www.mongodb.com)
 
 Copy the CONNECTION_STRING value to `.env` file
