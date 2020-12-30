@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/stylesheet/homestyle.css" type="text/css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Inventory | Homepage</title>
+</head>
+
+<body id="homepage">
+    <div class="logo">
+        <br>
+        <h1><i class="fa fa-plane"></i>&nbspDECCAN AIR</h1><i>"The sky is not his dad's property"</i>
+        <hr>
+    </div>
+    <div class="container">
+        <h2>
+            <br>
+            <center><u>Inventory</u></center>
+        </h2>
+        <div class="container">
+            <div class="container">
+                <br>
+                <div class="md-form mt-0">
+                    <input class="form-control" type="text" placeholder="Search for flights" aria-label="Search">
+                </div>
+                <br><br>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">S.No</th>
+                            <th scope="col">Flight Number</th>
+                            <th scope="col">Fuel Capacity (L)</th>
+                            <th scope="col">Route</th>
+                            <th scope="col">Origin</th>
+                            <th scope="col">Destination</th>
+                            <th scope="col">Duration (hrs)</th>
+                            <th scope="col">Time (hrs)</th>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <% var i; %>
+                        <% for( i=0; i
+                        < content.length; i++) { %>
+                            <tr>
+                                <th scope="row">
+                                    <%= i+1 %>
+                                </th>
+                                <td>
+                                    <%= content[i].number %>
+                                </td>
+                                <td>
+                                    <%= content[i].fuel %>
+                                </td>
+                                <td>
+                                    <%= content[i].route %>
+                                </td>
+                                <td>
+                                    <%= content[i].origin %>
+                                </td>
+                                <td>
+                                    <%= content[i].destination %>
+                                </td>
+                                <td>
+                                    <%= content[i].duration %>
+                                </td>
+                                <td>
+                                    <%= content[i].time %>
+                                </td>
+                                <td>
+                                    <a href="/update/<%= content[i]._id %>"><button type="button" class="btn btn-dark">Update</button></a>
+                                </td>
+                                <td>
+                                    <a href="/delete/<%= content[i]._id %>"><button type="button" class="btn btn-dark">Delete</button></a>
+                                </td>
+                            </tr>
+                            <% } %>
+                </table>
+            </div>
+        </div>
+
+    </div>
+    <br><br>
+    <center>
+        <h4>Total Flights =
+            <%= i%>
+        </h4>
+        <br><br>
+        <form action="/add" method="GET">
+            <button type="submit" class="btn btn-primary btn-lg">Add a flight</button>
+        </form>
+        <br>
+    </center>
+    <script>
+        $(document).ready(function() {
+            $(".form-control").on('keypress', function(key) {
+                let input = $(".form-control").val()
+                if (key.which == 13)
+                    window.find(input)
+            });
+
+            function getRandomInt(max) {
+                return Math.floor(Math.random() * Math.floor(max));
+            }
+            var bommi_messages = ["Where are you maara .. I had made fresh pancakes for dinner do come fast !!!", "Maara the people of our village believes in us .. Don't let them down", "My family is very important for me maara !!!", "You are a forest guy maara !!", "Maara come let's eat my bakery cakes together"];
+            setTimeout(function() {
+                alert("You've got a message from Bommi :" + "\n" + bommi_messages[getRandomInt(4)]);
+            }, 3000);
+        });
+    </script>
+</body>
+
+</html>
